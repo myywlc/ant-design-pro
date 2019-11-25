@@ -1,3 +1,5 @@
+@import '~antd/dist/antd.less';
+
 // antd
 @blue-6: #167cdb;
 @purple-6: #6329b4;
@@ -125,7 +127,7 @@
 @radio-button-active-color: @primary-7;
 
 // Layout
-@layout-body-background: #f0f2f5;
+@layout-body-background: @component-background;
 @layout-header-background: #001529;
 @layout-footer-background: @layout-body-background;
 @layout-sider-background: @layout-header-background;
@@ -154,8 +156,8 @@
 @input-placeholder-color: hsv(0, 0, 75%);
 @input-color: @text-color;
 @input-border-color: @border-color-base;
-@input-bg: @component-background;
-@input-number-hover-border-color: @input-hover-border-color;
+// @input-bg: @component-background;
+// @input-number-hover-border-color: @input-hover-border-color;
 @input-number-handler-active-bg: #f4f4f4;
 @input-number-handler-hover-bg: @primary-5;
 @input-number-handler-bg: @component-background;
@@ -163,7 +165,6 @@
 @input-addon-bg: @background-color-light;
 @input-hover-border-color: @primary-5;
 @input-disabled-bg: @disabled-bg;
-@input-outline-offset: 0 0;
 
 // Select
 // ---
