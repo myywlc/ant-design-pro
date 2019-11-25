@@ -170,4 +170,4 @@ class Login extends Component<LoginProps, LoginState> {
   Login[item] = LoginItem[item];
 });
 
-export default Form.create<LoginProps>()(Login);
+export default Login;

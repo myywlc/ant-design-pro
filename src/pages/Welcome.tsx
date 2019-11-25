@@ -1,7 +1,6 @@
 import React from 'react';
-import { PageHeaderWrapper } from '@ant-design/pro-layout';
 import { FormattedMessage } from 'umi-plugin-react/locale';
-import { Card, Typography, Alert } from 'antd';
+import { Card, Typography, Alert, Button } from 'antd';
 
 import styles from './Welcome.less';
 
@@ -14,7 +13,7 @@ const CodePreview: React.FC<{}> = ({ children }) => (
 );
 
 export default (): React.ReactNode => (
-  <PageHeaderWrapper>
+  <div>
     <Card>
       <Alert
         message="umi ui 现已发布，欢迎使用 npm run ui 启动体验。"
@@ -58,5 +57,10 @@ export default (): React.ReactNode => (
       </a>
       。
     </p>
-  </PageHeaderWrapper>
+    <Button type="primary">Primary</Button>
+    <Button>Default</Button>
+    <Button type="dashed">Dashed</Button>
+    <Button type="danger">Danger</Button>
+    <Button type="link">Link</Button>
+  </div>
 );

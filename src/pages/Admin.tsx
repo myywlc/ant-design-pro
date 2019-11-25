@@ -1,9 +1,8 @@
 import React from 'react';
 import { Card, Typography, Alert, Icon } from 'antd';
-import { PageHeaderWrapper } from '@ant-design/pro-layout';
 
 export default (): React.ReactNode => (
-  <PageHeaderWrapper content=" 这个页面只有 admin 权限才能查看">
+  <div>
     <Card>
       <Alert
         message="umi ui 现已发布，欢迎使用 npm run ui 启动体验。"
@@ -27,5 +26,5 @@ export default (): React.ReactNode => (
       </a>
       。
     </p>
-  </PageHeaderWrapper>
+  </div>
 );
