@@ -1,5 +1,7 @@
 import path from 'path';
 
+import * as IWebpackChainConfig from 'webpack-chain';
+
 function getModulePackageName(module: { context: string }) {
   if (!module.context) return null;
 
@@ -19,7 +21,7 @@ function getModulePackageName(module: { context: string }) {
   return packageName;
 }
 
-export default (config: any) => {
+const webpackPlugin = (config: IWebpackChainConfig) => {
   // optimize chunks
   config.optimization
     // share the same chunks across different modules
@@ -39,6 +41,7 @@ export default (config: any) => {
                 'gg-editor',
                 'g6',
                 '@antv',
+                'l7',
                 'gg-editor-core',
                 'bizcharts-plugin-slider',
               ].includes(packageName);
@@ -58,3 +61,5 @@ export default (config: any) => {
       },
     });
 };
+
+export default webpackPlugin;

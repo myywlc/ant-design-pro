@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { CheckboxChangeEvent } from 'antd/es/checkbox';
 import { Dispatch, AnyAction } from 'redux';
 import { FormComponentProps } from 'antd/es/form';
-import Link from 'umi/link';
+import { Link } from 'umi';
 import { connect } from 'dva';
 import { StateType } from '@/models/login';
 import LoginComponents from './components/Login';
@@ -18,17 +18,13 @@ const { Tab, UserName, Password, Mobile, Captcha, Submit } = LoginComponents;
 interface LoginProps {
   dispatch: Dispatch<AnyAction>;
   userLogin: StateType;
-  submitting: boolean;
+  submitting?: boolean;
 }
 interface LoginState {
   type: string;
   autoLogin: boolean;
 }
 
-@connect(({ login, loading }: ConnectState) => ({
-  userLogin: login,
-  submitting: loading.effects['login/login'],
-}))
 class Login extends Component<LoginProps, LoginState> {
   loginForm: FormComponentProps['form'] | undefined | null = undefined;
 
@@ -93,7 +89,7 @@ class Login extends Component<LoginProps, LoginState> {
   );
 
   render() {
-    const { userLogin, submitting } = this.props;
+    const { userLogin = {}, submitting } = this.props;
     const { status, type: loginType } = userLogin;
     const { type, autoLogin } = this.state;
     return (
@@ -202,4 +198,7 @@ class Login extends Component<LoginProps, LoginState> {
   }
 }
 
-export default Login;
+export default connect(({ login, loading }: ConnectState) => ({
+  userLogin: login,
+  submitting: loading.effects['login/login'],
+}))(Login);
