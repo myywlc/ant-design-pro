@@ -15,6 +15,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node_version }}
+      - run: echo ${{github.ref}}
       - run: yarn
       - run: yarn run lint
       - run: yarn run tsc
@@ -25,13 +26,3 @@ jobs:
           PROGRESS: none
           NODE_ENV: test
           NODE_OPTIONS: --max_old_space_size=4096
-  deploy:
-    name: Deploy to GitHub Pages
-    runs-on: ubuntu-latest
-    if: success() && github.event == 'push' && github.ref == 'master'
-    steps:
-      - name: publish
-        uses: maxheld83/ghpages@v0.2.1
-        env:
-          BUILD_DIR: 'dist/'
-          GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
