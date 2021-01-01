@@ -1,16 +1,16 @@
-import { DefaultFooter, MenuDataItem, getMenuData, getPageTitle } from '@ant-design/pro-layout';
+import type { MenuDataItem } from '@ant-design/pro-layout';
+import { DefaultFooter, getMenuData, getPageTitle } from '@ant-design/pro-layout';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { Link, SelectLang, useIntl, ConnectProps, connect } from 'umi';
+import type { ConnectProps } from 'umi';
+import { Link, SelectLang, useIntl, connect, FormattedMessage } from 'umi';
 import React from 'react';
-import { ConnectState } from '@/models/connect';
+import type { ConnectState } from '@/models/connect';
 import logo from '../assets/logo.svg';
 import styles from './UserLayout.less';
 
-export interface UserLayoutProps extends Partial<ConnectProps> {
-  breadcrumbNameMap: {
-    [path: string]: MenuDataItem;
-  };
-}
+export type UserLayoutProps = {
+  breadcrumbNameMap: Record<string, MenuDataItem>;
+} & Partial<ConnectProps>;
 
 const UserLayout: React.FC<UserLayoutProps> = (props) => {
   const {
@@ -52,7 +52,12 @@ const UserLayout: React.FC<UserLayoutProps> = (props) => {
                 <span className={styles.title}>Ant Design</span>
               </Link>
             </div>
-            <div className={styles.desc}>Ant Design 是西湖区最具影响力的 Web 设计规范</div>
+            <div className={styles.desc}>
+              <FormattedMessage
+                id="pages.layouts.userLayout.title"
+                defaultMessage="Ant Design 是西湖区最具影响力的 Web 设计规范"
+              />
+            </div>
           </div>
           {children}
         </div>
